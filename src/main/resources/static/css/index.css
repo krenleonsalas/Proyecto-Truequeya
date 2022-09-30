@@ -1,0 +1,41 @@
+.nav-link{
+    color: white;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #000;
+    color: white;
+}
+
+.catalog-img {
+    width: 45%;
+    height: auto;
+    margin: 0;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1700px;
+    }
+}
+
+.main-container {
+    height: 2000px;
+    margin:10px auto;
+    
+}
+
+footer {
+    align-self: flex-end;
+    margin-bottom: 120px;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+ul {
+    list-style-type:none;
+}

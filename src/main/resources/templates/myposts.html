@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truequeya</title>
+    <link rel="shortcut icon" href="images/icono_ty.PNG" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/ae140dfa86.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container main-container m-10">
+        <div class="text-center">
+            <div th:insert="layout/header :: header">...</div>
+        </div>
+        <div class="container">
+            <div class="container mt-3">
+                <div class="row">
+                    <div th:if="${!publications.isEmpty()}" th:each="pub: ${publications}"
+                        class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="card mb-4 box-shadow">
+                            <img th:src="${pub.imageUrl}" class="card-img-top"
+                                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src=""
+                                data-holder-rendered="true">
+                            <div class="card-body">
+                                <h5 th:text="${pub.title}" class="card-title"></h5>
+                                <p th:text="${pub.description}" class="card-text"></p>
+                                <p class="card-text">Categoria: <span th:text="${pub.category.name}"></span></p>
+                                <p class="card-text">Cambio por: <span th:text="${pub.changeFor}"></span></p>
+                                <p class="card-text">Publicado por: <span
+                                        th:text="${pub.user.name} + ' ' + ${pub.user.lastname}"></span></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button"
+                                            class="btn btn-sm btn-success btn-outline-secondary text-white">Ver
+                                            más...</button>
+                                    </div>
+                                    <small class="text-muted">21/09/2022</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${publications.isEmpty()}" class="text-center">
+                        <span>No existen registros para esta Categoria.</span>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link">Anterior</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div th:insert="layout/footer :: footer">...</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

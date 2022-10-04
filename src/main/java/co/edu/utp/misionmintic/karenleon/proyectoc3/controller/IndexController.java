@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import co.edu.utp.misionmintic.karenleon.proyectoc3.service.CategoryService;
 import co.edu.utp.misionmintic.karenleon.proyectoc3.service.PublicationService;
+import co.edu.utp.misionmintic.karenleon.proyectoc3.service.CategoryService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -62,6 +62,18 @@ public class IndexController {
     @GetMapping("/publication-form")
     public String goToPublicationForm(Model model) {
         return "publicationForm";
+    }
+
+     @GetMapping("/contact-form")
+    public String goToContactForm(Model model) {
+        return "contactForm";
+    }
+
+    @GetMapping("/my-posts/{email}")
+    public String goToMyPosts(@PathVariable("email") String userEmail, Model model) {
+        var publications = this.catalogService.getPublicationsByUserEmail(userEmail);
+        model.addAttribute("publications", publications);
+        return "myposts";
     }
 
 }

@@ -31,7 +31,7 @@ const postToCreateUser = async (bodyObject) => {
     });
 
     if (response.ok) {                          
-        showSucces("usuario registrado correctamente")
+        showSucces("Usuario Registrado Correctamente")
     } else {
         const message = await response.text();
         showError(message);

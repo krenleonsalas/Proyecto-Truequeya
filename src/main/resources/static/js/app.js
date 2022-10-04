@@ -23,6 +23,8 @@ const loadUserConfig = () => {
 
         const userInfo = JSON.parse(user);
         document.getElementById("user-fullname").innerText = userInfo.name + " " + userInfo.lastname;
+        document.getElementById("history-section").getElementsByTagName("a").item(0).setAttribute("href", "/my-posts/" + userInfo.email);
+              
     }
 };
 
